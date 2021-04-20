@@ -82,8 +82,9 @@
       // plus btn event handler
       const btnClick = document.getElementById('btnClick');
       btnClick.addEventListener('click', function(){
-          const addQuantity = document.getElementById('addQuantity');
-          const totalQuantity = addQuantity + 1;
+          addQuantity = document.getElementById('addQuantity').value;
+          addQuantity++;
+          document.getElementById('addQuantity').value =addQuantity;
        })
    </script>
 </body>
