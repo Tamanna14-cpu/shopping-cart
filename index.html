@@ -81,20 +81,30 @@
    <script>
       var quantity;
       const phnPrice = document.getElementById('phnPrice').innerText;
-          function phnPriceTotal(){
+         function phnPriceTotal(){
              var total = quantity * phnPrice;
              document.getElementById('phnPrice').innerText = total;
-          }
-      
-      
+         }
+         
+      function addingQuantity(id){
+          quantity = document.getElementById(id).value;
+          quantity++;
+          document.getElementById(id).value = quantity;
+      }
+
+      function minusQuantity(id){
+          quantity = document.getElementById(id).value;
+          quantity--;
+          document.getElementById(id).value = quantity;
+      }
 
       // plus btn event handler
       const plusBtnClick = document.getElementById('plusBtnClick');
       plusBtnClick.addEventListener('click', function(){
-          quantity = document.getElementById('addQuantity').value;
-          quantity++;
-          document.getElementById('addQuantity').value = quantity;
-         
+         //  quantity = document.getElementById('addQuantity').value;
+         //  quantity++;
+         //  document.getElementById('addQuantity').value = quantity;
+          addingQuantity('addQuantity');
           phnPriceTotal();
           doMath ()
           
@@ -103,10 +113,10 @@
       // minus btn event handler
       const minusBtnClick = document.getElementById('minusBtnClick');
       minusBtnClick.addEventListener('click', function(){
-          quantity = document.getElementById('addQuantity').value;
-          quantity--;
-          document.getElementById('addQuantity').value = quantity;
-         
+         //  quantity = document.getElementById('addQuantity').value;
+         //  quantity--;
+         //  document.getElementById('addQuantity').value = quantity;
+          minusQuantity('addQuantity');
           phnPriceTotal();
           doMath ()
           
@@ -123,10 +133,7 @@
       // 2nd plus btn event handler
       const plusBtn = document.getElementById('plusBtn');
       plusBtn.addEventListener('click', function(){
-          quantity = document.getElementById('addSecondQuantity').value;
-          quantity++;
-          document.getElementById('addSecondQuantity').value = quantity;
-
+          addingQuantity('addSecondQuantity');
           casePriceTotal()
           doMath ()
       })
@@ -134,10 +141,7 @@
       // 2nd minus btn event handler
       const minusBtn = document.getElementById('minusBtn');
       minusBtn.addEventListener('click', function(){
-          quantity = document.getElementById('addSecondQuantity').value;
-          quantity--;
-          document.getElementById('addSecondQuantity').value = quantity;
-
+          minusQuantity('addSecondQuantity');
           casePriceTotal()
           doMath ()
       })
