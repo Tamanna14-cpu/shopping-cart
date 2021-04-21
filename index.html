@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="addSecondQuantity" type="text" class="form-control text-center" value="1">
+                           <button id="plusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="casePrice">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -81,7 +81,7 @@
    <script>
       var quantity;
       const phnPrice = document.getElementById('phnPrice').innerText;
-          function priceTotal(){
+          function phnPriceTotal(){
              var total = quantity * phnPrice;
              document.getElementById('phnPrice').innerText = total;
           }
@@ -95,7 +95,8 @@
           quantity++;
           document.getElementById('addQuantity').value = quantity;
          
-          priceTotal();
+          phnPriceTotal();
+          doMath ()
           
          })
 
@@ -106,9 +107,54 @@
           quantity--;
           document.getElementById('addQuantity').value = quantity;
          
-          priceTotal();
+          phnPriceTotal();
+          doMath ()
           
       })
+
+
+      var quantity;
+      const casePrice = document.getElementById('casePrice').innerText;
+          function casePriceTotal(){
+             var total = quantity * casePrice;
+             document.getElementById('casePrice').innerText = total;
+          }
+   
+      // 2nd plus btn event handler
+      const plusBtn = document.getElementById('plusBtn');
+      plusBtn.addEventListener('click', function(){
+          quantity = document.getElementById('addSecondQuantity').value;
+          quantity++;
+          document.getElementById('addSecondQuantity').value = quantity;
+
+          casePriceTotal()
+          doMath ()
+      })
+
+      // 2nd minus btn event handler
+      const minusBtn = document.getElementById('minusBtn');
+      minusBtn.addEventListener('click', function(){
+          quantity = document.getElementById('addSecondQuantity').value;
+          quantity--;
+          document.getElementById('addSecondQuantity').value = quantity;
+
+          casePriceTotal()
+          doMath ()
+      })
+
+      // subTotal
+      function addSubtotal (x,y){
+         return x + y;
+      }
+
+      function doMath (){
+         var n1 = Number(document.getElementById('phnPrice').innerText);
+         var n2 = Number(document.getElementById('casePrice').innerText);
+
+         var sum = addSubtotal(n1, n2);
+         document.getElementById('subTotal').innerText = sum;
+      }
+      
    </script>
 </body>
 </html>
