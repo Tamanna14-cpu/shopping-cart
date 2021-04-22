@@ -59,7 +59,7 @@
 
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
+                        <h5>Tax <span style="color: rgb(170, 168, 168);">(5%)</span> : </h5>
                         <h5>Total:</h5>
                      </div>
 
@@ -114,9 +114,7 @@
       // minus btn event handler
       const minusBtnClick = document.getElementById('minusBtnClick');
       minusBtnClick.addEventListener('click', function(){
-         //  quantity = document.getElementById('addQuantity').value;
-         //  quantity--;
-         //  document.getElementById('addQuantity').value = quantity;
+
           minusQuantity('addQuantity');
           phnPriceTotal();
           doMath ()
